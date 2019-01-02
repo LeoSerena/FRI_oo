@@ -53,66 +53,38 @@
 <dl class="method">
 <dt id="irr_four_samp.IrrFourSamp.__init__">
 <code class="descname">__init__</code><span class="sig-paren">(</span><em>K</em>, <em>M</em>, <em>tau</em>, <em>L=None</em>, <em>periodic_spectrum=True</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_four_samp.IrrFourSamp.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>K: int</strong></dt>
-<dd><p class="first last">number of diracs</p>
-</dd>
-<dt><strong>M: int</strong></dt>
-<dd><p class="first last">number of samples over the signal</p>
-</dd>
-<dt><strong>tau: float</strong></dt>
-<dd><p class="first last">period</p>
-</dd>
-<dt><strong>L: int</strong></dt>
-<dd><p class="first last">number of samples</p>
-</dd>
-<dt><strong>periodic_spectrum: bool</strong></dt>
-<dd><p class="first last">boolean deciding whether using interpolation or not</p>
-</dd>
+<dd><dl class="docutils">
+<dt>K: int</dt>
+<dd>number of diracs</dd>
+<dt>M: int</dt>
+<dd>number of samples over the signal</dd>
+<dt>tau: float</dt>
+<dd>period</dd>
+<dt>L: int</dt>
+<dd>number of samples</dd>
+<dt>periodic_spectrum: bool</dt>
+<dd>boolean deciding whether using interpolation or not</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="irr_four_samp.IrrFourSamp.add_noise">
 <code class="descname">add_noise</code><span class="sig-paren">(</span><em>P=inf</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_four_samp.IrrFourSamp.add_noise" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method for addition of noise to signal</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>P: float</strong></dt>
-<dd><p class="first last">SNR ratio in db</p>
-</dd>
-<dt><strong>noiseless: ndarray</strong></dt>
-<dd><p class="first last">signal without noise</p>
-</dd>
-<dt><strong>complex: bool</strong></dt>
-<dd><p class="first last">True if needs a imaginary noise addition, for Fourier domain samples</p>
-</dd>
+<dl class="docutils">
+<dt>P: float</dt>
+<dd>SNR ratio in db</dd>
+<dt>noiseless: ndarray</dt>
+<dd>signal without noise</dd>
+<dt>complex: bool</dt>
+<dd>True if needs a imaginary noise addition, for Fourier domain samples</dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>withNoise: ndarray</strong></dt>
-<dd><p class="first last">the signal with noise</p>
-</dd>
-<dt><strong>noise_level: float</strong></dt>
-<dd><p class="first last">the noise_level</p>
-</dd>
+<dl class="docutils">
+<dt>withNoise: ndarray</dt>
+<dd>the signal with noise</dd>
+<dt>noise_level: float</dt>
+<dd>the noise_level</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="staticmethod">
@@ -125,105 +97,54 @@
 <dt id="irr_four_samp.IrrFourSamp.plot">
 <code class="descname">plot</code><span class="sig-paren">(</span><em>save_fig=False</em>, <em>fig_format='png'</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_four_samp.IrrFourSamp.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plotting method of the results</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>save_fig: bool</strong></dt>
-<dd><p class="first last">boolean corresponding if the plot has to be saved or not</p>
-</dd>
-<dt><strong>fig_format: str</strong></dt>
-<dd><p class="first last">the image format with which the file will be stored if save_fig is True</p>
-</dd>
+<dl class="docutils">
+<dt>save_fig: bool</dt>
+<dd>boolean corresponding if the plot has to be saved or not</dd>
+<dt>fig_format: str</dt>
+<dd>the image format with which the file will be stored if save_fig is True</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="irr_four_samp.IrrFourSamp.reconstruction">
 <code class="descname">reconstruction</code><span class="sig-paren">(</span><em>G=None</em>, <em>max_ini=100</em>, <em>stop_cri='max_iter'</em>, <em>interp_kernel='triangular'</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_four_samp.IrrFourSamp.reconstruction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Main method of the class. It reconstructs the signal.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>G: ndarray</strong></dt>
-<dd><p class="first last">linear mapping</p>
-</dd>
-<dt><strong>max_ini: int</strong></dt>
-<dd><p class="first last">maximum number of random initialisation</p>
-</dd>
-<dt><strong>stop_cri: str</strong></dt>
-<dd><p class="first last">stopping criteria. Can either be <em>mse</em> or <em>max_iter</em></p>
-</dd>
-<dt><strong>interp_kernel: str</strong></dt>
-<dd><p class="first last">interpolation kernel mode. Can either be <em>dirichlet</em>, <em>triangular</em>, <em>cubic</em> or <em>keys</em>. If in periodic_spectrum, set to <em>dirichlet</em></p>
-</dd>
+<dl class="docutils">
+<dt>G: ndarray</dt>
+<dd>linear mapping</dd>
+<dt>max_ini: int</dt>
+<dd>maximum number of random initialisation</dd>
+<dt>stop_cri: str</dt>
+<dd>stopping criteria. Can either be <em>mse</em> or <em>max_iter</em></dd>
+<dt>interp_kernel: str</dt>
+<dd>interpolation kernel mode. Can either be <em>dirichlet</em>, <em>triangular</em>, <em>cubic</em> or <em>keys</em>. If in periodic_spectrum, set to <em>dirichlet</em></dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="irr_four_samp.IrrFourSamp.save_results">
 <code class="descname">save_results</code><span class="sig-paren">(</span><em>simName</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_four_samp.IrrFourSamp.save_results" title="Permalink to this definition">¶</a></dt>
 <dd><p>save the results to the <em>results</em> file</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>simName: str</strong></dt>
-<dd><p class="first last">string naming the file</p>
-</dd>
+<dl class="docutils">
+<dt>simName: str</dt>
+<dd>string naming the file</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="irr_four_samp.IrrFourSamp.setup">
 <code class="descname">setup</code><span class="sig-paren">(</span><em>a=None</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_four_samp.IrrFourSamp.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method that sets up the measurements. If none is given, they will automatically be generated</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>a: *(L x 2)* measurements with frequencies as first row and amplitudes as second row</strong></dt>
-<dd></dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
+<blockquote>
+<div>a: <em>(L x 2)</em> measurements with frequencies as first row and amplitudes as second row</div></blockquote>
 </dd></dl>
 
 <dl class="method">
 <dt id="irr_four_samp.IrrFourSamp.show_results">
 <code class="descname">show_results</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#irr_four_samp.IrrFourSamp.show_results" title="Permalink to this definition">¶</a></dt>
 <dd><p>panda display of results</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>pandas.DataFrame</strong></dt>
-<dd></dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
+<blockquote>
+<div>pandas.DataFrame</div></blockquote>
 </dd></dl>
 
 </dd></dl>

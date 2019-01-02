@@ -53,63 +53,36 @@
 <dl class="method">
 <dt id="irr_time_samp.IrrTimeSamp.__init__">
 <code class="descname">__init__</code><span class="sig-paren">(</span><em>K</em>, <em>tau</em>, <em>B</em>, <em>L</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_time_samp.IrrTimeSamp.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>K: int</strong></dt>
-<dd><p class="first last">number of diracs</p>
-</dd>
-<dt><strong>tau: float</strong></dt>
-<dd><p class="first last">period</p>
-</dd>
-<dt><strong>B: float</strong></dt>
-<dd><p class="first last">bandwidth</p>
-</dd>
-<dt><strong>L: int</strong></dt>
-<dd><p class="first last">number of samples</p>
-</dd>
+<dd><dl class="docutils">
+<dt>K: int</dt>
+<dd>number of diracs</dd>
+<dt>tau: float</dt>
+<dd>period</dd>
+<dt>B: float</dt>
+<dd>bandwidth</dd>
+<dt>L: int</dt>
+<dd>number of samples</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="irr_time_samp.IrrTimeSamp.add_noise">
 <code class="descname">add_noise</code><span class="sig-paren">(</span><em>P=inf</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_time_samp.IrrTimeSamp.add_noise" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method for addition of noise to signal</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>P: float</strong></dt>
-<dd><p class="first last">SNR ratio in db</p>
-</dd>
-<dt><strong>noiseless: ndarray</strong></dt>
-<dd><p class="first last">signal without noise</p>
-</dd>
-<dt><strong>complex: bool</strong></dt>
-<dd><p class="first last">True if needs a imaginary noise addition, for Fourier domain samples</p>
-</dd>
+<dl class="docutils">
+<dt>P: float</dt>
+<dd>SNR ratio in db</dd>
+<dt>noiseless: ndarray</dt>
+<dd>signal without noise</dd>
+<dt>complex: bool</dt>
+<dd>True if needs a imaginary noise addition, for Fourier domain samples</dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>withNoise: ndarray</strong></dt>
-<dd><p class="first last">the signal with noise</p>
-</dd>
-<dt><strong>noise_level: float</strong></dt>
-<dd><p class="first last">the noise_level</p>
-</dd>
+<dl class="docutils">
+<dt>withNoise: ndarray</dt>
+<dd>the signal with noise</dd>
+<dt>noise_level: float</dt>
+<dd>the noise_level</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="staticmethod">
@@ -158,41 +131,22 @@
 <dt id="irr_time_samp.IrrTimeSamp.reconstruction">
 <code class="descname">reconstruction</code><span class="sig-paren">(</span><em>stop_cri='max_iter'</em>, <em>max_ini=100</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_time_samp.IrrTimeSamp.reconstruction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Main method of the clas. This reconstructs the signal according to the algorithm.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>stop_cri: str</strong></dt>
-<dd><p class="first last">the stopping criteria of the algorithm, can either be <em>mse</em> or <em>max_iter</em></p>
-</dd>
-<dt><strong>max_ini: int</strong></dt>
-<dd><p class="first last">maximum number of random initialisations</p>
-</dd>
+<dl class="docutils">
+<dt>stop_cri: str</dt>
+<dd>the stopping criteria of the algorithm, can either be <em>mse</em> or <em>max_iter</em></dd>
+<dt>max_ini: int</dt>
+<dd>maximum number of random initialisations</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="irr_time_samp.IrrTimeSamp.save_results">
 <code class="descname">save_results</code><span class="sig-paren">(</span><em>simName</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_time_samp.IrrTimeSamp.save_results" title="Permalink to this definition">¶</a></dt>
 <dd><p>save the results to the <em>results</em> file</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>simName: str</strong></dt>
-<dd><p class="first last">string naming the file</p>
-</dd>
+<dl class="docutils">
+<dt>simName: str</dt>
+<dd>string naming the file</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
@@ -200,40 +154,20 @@
 <code class="descname">setup</code><span class="sig-paren">(</span><em>G=None</em>, <em>a=None</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_time_samp.IrrTimeSamp.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup the measurements a and the linear matrix G. If one of them isn’t given, 
 function sets up random measurements a according to a Poisson distribution</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>G: numpy.ndarray</strong></dt>
-<dd><p class="first last">linear mapping between the sampled signal and the measurements, (<em>L</em> x <em>M</em>) matrix</p>
-</dd>
-<dt><strong>a: numpy.ndarray</strong></dt>
-<dd><p class="first last">(<em>L</em> x <em>2</em>) matrix. First column are the time and second the amplitude of the measurements.</p>
-</dd>
+<dl class="docutils">
+<dt>G: numpy.ndarray</dt>
+<dd>linear mapping between the sampled signal and the measurements, (<em>L</em> x <em>M</em>) matrix</dd>
+<dt>a: numpy.ndarray</dt>
+<dd>(<em>L</em> x <em>2</em>) matrix. First column are the time and second the amplitude of the measurements.</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="irr_time_samp.IrrTimeSamp.show_results">
 <code class="descname">show_results</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#irr_time_samp.IrrTimeSamp.show_results" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints the some results after performing FRI reconstruction</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>pandas.DataFrame</strong></dt>
-<dd></dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
+<blockquote>
+<div>pandas.DataFrame</div></blockquote>
 </dd></dl>
 
 </dd></dl>

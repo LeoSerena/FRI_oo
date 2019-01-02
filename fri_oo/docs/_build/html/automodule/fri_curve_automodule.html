@@ -53,44 +53,24 @@
 <dl class="method">
 <dt id="fri_curve.FriCurve.__init__">
 <code class="descname">__init__</code><span class="sig-paren">(</span><em>tau_x</em>, <em>tau_y</em><span class="sig-paren">)</span><a class="headerlink" href="#fri_curve.FriCurve.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>tau_x: float</strong></dt>
-<dd><p class="first last">period on x axis</p>
-</dd>
-<dt><strong>tau_y: float</strong></dt>
-<dd><p class="first last">period on y axis</p>
-</dd>
+<dd><dl class="docutils">
+<dt>tau_x: float</dt>
+<dd>period on x axis</dd>
+<dt>tau_y: float</dt>
+<dd>period on y axis</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="fri_curve.FriCurve.plot">
 <code class="descname">plot</code><span class="sig-paren">(</span><em>save_fig=False</em>, <em>fig_format='png'</em><span class="sig-paren">)</span><a class="headerlink" href="#fri_curve.FriCurve.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>plotter for the FRI curve</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>save_fig: bool</strong></dt>
-<dd><p class="first last">saves the file is is True</p>
-</dd>
-<dt><strong>fig_format: str</strong></dt>
-<dd><p class="first last">format used if saved</p>
-</dd>
+<dl class="docutils">
+<dt>save_fig: bool</dt>
+<dd>saves the file is is True</dd>
+<dt>fig_format: str</dt>
+<dd>format used if saved</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
@@ -98,84 +78,48 @@
 <code class="descname">reconstruction</code><span class="sig-paren">(</span><em>max_ini=20</em>, <em>stop_cri='max_iter'</em>, <em>verbose=False</em>, <em>lsq=False</em>, <em>cadz=False</em>, <em>SLRA=False</em><span class="sig-paren">)</span><a class="headerlink" href="#fri_curve.FriCurve.reconstruction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Main method.
 Reconstrucs FRI curve according to requested algorithms.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>max_ini: int</strong></dt>
-<dd><p class="first last">maximum number of random initialisations</p>
-</dd>
-<dt><strong>stop_cri: str</strong></dt>
-<dd><p class="first last">the stopping criteria of the algorithm, can either be <em>mse</em> or <em>max_iter</em></p>
-</dd>
-<dt><strong>verbose: bool</strong></dt>
-<dd><p class="first last">if True outputs curve coefficients and curve coefficients error</p>
-</dd>
-<dt><strong>lsq: bool</strong></dt>
-<dd><p class="first last">if True also runs least squre approximation reconstruction</p>
-</dd>
-<dt><strong>cadz: bool</strong></dt>
-<dd><p class="first last">if True also runs cadzdow method reconstruction</p>
-</dd>
-<dt><strong>SLRA: bool</strong></dt>
-<dd><p class="first last">if True also runs SLRA method reconstruction</p>
-</dd>
+<dl class="docutils">
+<dt>max_ini: int</dt>
+<dd>maximum number of random initialisations</dd>
+<dt>stop_cri: str</dt>
+<dd>the stopping criteria of the algorithm, can either be <em>mse</em> or <em>max_iter</em></dd>
+<dt>verbose: bool</dt>
+<dd>if True outputs curve coefficients and curve coefficients error</dd>
+<dt>lsq: bool</dt>
+<dd>if True also runs least squre approximation reconstruction</dd>
+<dt>cadz: bool</dt>
+<dd>if True also runs cadzdow method reconstruction</dd>
+<dt>SLRA: bool</dt>
+<dd>if True also runs SLRA method reconstruction</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="fri_curve.FriCurve.save_results">
 <code class="descname">save_results</code><span class="sig-paren">(</span><em>simName</em><span class="sig-paren">)</span><a class="headerlink" href="#fri_curve.FriCurve.save_results" title="Permalink to this definition">¶</a></dt>
 <dd><p>save results to the <em>results</em> file</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>simName: str</strong></dt>
-<dd><p class="first last">string naming the file</p>
-</dd>
+<dl class="docutils">
+<dt>simName: str</dt>
+<dd>string naming the file</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="fri_curve.FriCurve.setup">
 <code class="descname">setup</code><span class="sig-paren">(</span><em>M0</em>, <em>N0</em>, <em>B_x</em>, <em>B_y</em>, <em>P</em><span class="sig-paren">)</span><a class="headerlink" href="#fri_curve.FriCurve.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simulation setup</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>M0: int</strong></dt>
-<dd><p class="first last">number of samples in x axis</p>
-</dd>
-<dt><strong>N0: int</strong></dt>
-<dd><p class="first last">number of samples in y axis</p>
-</dd>
-<dt><strong>B_x: int</strong></dt>
-<dd><p class="first last">bandwidth in x axis</p>
-</dd>
-<dt><strong>B_y: int</strong></dt>
-<dd><p class="first last">bandwidth in y axis</p>
-</dd>
-<dt><strong>P: float</strong></dt>
-<dd><p class="first last">SNR in decibel</p>
-</dd>
+<dl class="docutils">
+<dt>M0: int</dt>
+<dd>number of samples in x axis</dd>
+<dt>N0: int</dt>
+<dd>number of samples in y axis</dd>
+<dt>B_x: int</dt>
+<dd>bandwidth in x axis</dd>
+<dt>B_y: int</dt>
+<dd>bandwidth in y axis</dd>
+<dt>P: float</dt>
+<dd>SNR in decibel</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 </dd></dl>

@@ -53,60 +53,34 @@
 <dl class="method">
 <dt id="simulation.Simulation.__init__">
 <code class="descname">__init__</code><span class="sig-paren">(</span><em>K</em>, <em>tau</em>, <em>L</em><span class="sig-paren">)</span><a class="headerlink" href="#simulation.Simulation.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>K: int</strong></dt>
-<dd><p class="first last">number of needed diracs to reconstruct</p>
-</dd>
-<dt><strong>tau: float</strong></dt>
-<dd><p class="first last">period</p>
-</dd>
-<dt><strong>L: int</strong></dt>
-<dd><p class="first last">number of samples</p>
-</dd>
+<dd><dl class="docutils">
+<dt>K: int</dt>
+<dd>number of needed diracs to reconstruct</dd>
+<dt>tau: float</dt>
+<dd>period</dd>
+<dt>L: int</dt>
+<dd>number of samples</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="simulation.Simulation.add_noise">
 <code class="descname">add_noise</code><span class="sig-paren">(</span><em>P</em>, <em>noiseless</em>, <em>complex=False</em><span class="sig-paren">)</span><a class="headerlink" href="#simulation.Simulation.add_noise" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method for addition of noise to signal</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>P: float</strong></dt>
-<dd><p class="first last">SNR ratio in db</p>
-</dd>
-<dt><strong>noiseless: ndarray</strong></dt>
-<dd><p class="first last">signal without noise</p>
-</dd>
-<dt><strong>complex: bool</strong></dt>
-<dd><p class="first last">True if needs a imaginary noise addition, for Fourier domain samples</p>
-</dd>
+<dl class="docutils">
+<dt>P: float</dt>
+<dd>SNR ratio in db</dd>
+<dt>noiseless: ndarray</dt>
+<dd>signal without noise</dd>
+<dt>complex: bool</dt>
+<dd>True if needs a imaginary noise addition, for Fourier domain samples</dd>
 </dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>withNoise: ndarray</strong></dt>
-<dd><p class="first last">the signal with noise</p>
-</dd>
-<dt><strong>noise_level: float</strong></dt>
-<dd><p class="first last">the noise_level</p>
-</dd>
+<dl class="docutils">
+<dt>withNoise: ndarray</dt>
+<dd>the signal with noise</dd>
+<dt>noise_level: float</dt>
+<dd>the noise_level</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
@@ -125,19 +99,10 @@
 <dt id="simulation.Simulation.save_results">
 <code class="descname">save_results</code><span class="sig-paren">(</span><em>simName</em><span class="sig-paren">)</span><a class="headerlink" href="#simulation.Simulation.save_results" title="Permalink to this definition">¶</a></dt>
 <dd><p>save the results to the <em>results</em> file</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>simName: str</strong></dt>
-<dd><p class="first last">string naming the file</p>
-</dd>
+<dl class="docutils">
+<dt>simName: str</dt>
+<dd>string naming the file</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">

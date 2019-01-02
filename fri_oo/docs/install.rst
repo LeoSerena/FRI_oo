@@ -7,19 +7,9 @@
 Installation
 ============
 
-To install the package, first clone the repository into a folder::
+To install the package, simply run::
 
-    git clone https://github.com/LeoSerena/FRI_oo.git
-
-Then go in the directory::
-
-    cd fri_oo
-
-The installation file are in the dist folder.
-
-Now install the package using pip::
-
-    pip install .
+    pip install fri_oo
 
 Remarks
 -------

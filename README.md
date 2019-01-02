@@ -1,10 +1,8 @@
 README
 ======
 
-This package contains a signal processing reconstruction algorithm for `ununiform FRI sampling`_.
+This package contains a signal processing reconstruction algorithm for `ununiform FRI sampling`: https://infoscience.epfl.ch/record/222498/files/article.pdf?version=5
 
-.. _ununiform FRI sampling: https://infoscience.epfl.ch/record/222498/files/article.pdf?version=5
-
-the documentation and theory linked to the package is accessible here:
+the documentation, basic theory and installation guide linked to the package are accessible here:
 
 https://fri-oo.readthedocs.io/en/latest/

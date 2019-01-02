@@ -10,15 +10,15 @@ import pickle
 
 # for actual package
 # ==================
-from . import plotter
-from . simulation import Simulation
-from . alg_tools_1d import distance, dirac_recon_irreg_fourier, build_G_fourier
+# from . import plotter
+# from . simulation import Simulation
+# from . alg_tools_1d import distance, dirac_recon_irreg_fourier, build_G_fourier
 
 # for html automodule
 # ===================
-# from fri_oo.simulation import Simulation
-# from fri_oo import plotter
-# from fri_oo.alg_tools_1d import distance, dirac_recon_irreg_fourier, build_G_fourier
+from fri_oo.simulation import Simulation
+from fri_oo import plotter
+from fri_oo.alg_tools_1d import distance, dirac_recon_irreg_fourier, build_G_fourier
 
 
 class IrrFourSamp(Simulation):

@@ -7,16 +7,15 @@
 Installation
 ============
 
-fri_oo requires pip installed.
-to install, run the following::
+To install the package, simply run::
 
-    $ python -m pip install --index-url https://test.pypi.org/simple/ fri_oo
+    pip install fri_oo
 
 Remarks
 -------
 
-There are no auto-install of dependencies. The needed ones are: numpy, scipy, matplotlib, joblib and pandas.
-To install using anaconda::
+The needed dependencies should automatically install, namely: *numpy*, *scipy*, *matplotlib*, *joblib* and *pandas*.
+To manually install them using anaconda::
 
     $ conda activate [env]
     $ conda install numpy, scipy, matplotlib, joblib, pandas

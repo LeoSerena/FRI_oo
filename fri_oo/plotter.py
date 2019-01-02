@@ -11,13 +11,13 @@ from matplotlib import pyplot as plt
 
 # for actual package
 # ==================
-from . alg_tools_1d import build_G_fourier
-from . alg_tools_2d import plt_recon_fri_curve
+# from . alg_tools_1d import build_G_fourier
+# from . alg_tools_2d import plt_recon_fri_curve
 
 # for html automodule
 # ===================
-# from fri_oo.alg_tools_1d import build_G_fourier
-# from fri_oo.alg_tools_2d import plt_recon_fri_curve
+from fri_oo.alg_tools_1d import build_G_fourier
+from fri_oo.alg_tools_2d import plt_recon_fri_curve
 
 def fetch_data(name):
     """

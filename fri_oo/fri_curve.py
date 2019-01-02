@@ -10,12 +10,12 @@ import pickle
 import os
 
 # for actual package
-from . alg_tools_2d import recon_fri_curve, std_normalised, snr_normalised, gen_samples_edge_img, build_G_fri_curve, lsq_fri_curve, cadzow_iter_fri_curve, slra_fri_curve
-from . import plotter
+# from . alg_tools_2d import recon_fri_curve, std_normalised, snr_normalised, gen_samples_edge_img, build_G_fri_curve, lsq_fri_curve, cadzow_iter_fri_curve, slra_fri_curve
+# from . import plotter
 
 # for html automodule
-# from fri_oo.alg_tools_2d import recon_fri_curve, std_normalised, snr_normalised, gen_samples_edge_img, build_G_fri_curve, lsq_fri_curve, cadzow_iter_fri_curve, slra_fri_curve
-# from fri_oo import plotter
+from fri_oo.alg_tools_2d import recon_fri_curve, std_normalised, snr_normalised, gen_samples_edge_img, build_G_fri_curve, lsq_fri_curve, cadzow_iter_fri_curve, slra_fri_curve
+from fri_oo import plotter
 
 class FriCurve:
     """

@@ -11,15 +11,15 @@ import pickle
 
 # for package ref
 # ===============
-from . simulation import Simulation
-from . alg_tools_1d import dirac_recon_time, periodicSinc, distance
-from . import plotter
+# from . simulation import Simulation
+# from . alg_tools_1d import dirac_recon_time, periodicSinc, distance
+# from . import plotter
 
 # for html automodule
 # ===================
-# from fri_oo.simulation import Simulation
-# from fri_oo.alg_tools_1d import dirac_recon_time, periodicSinc, distance
-# from fri_oo import plotter
+from fri_oo.simulation import Simulation
+from fri_oo.alg_tools_1d import dirac_recon_time, periodicSinc, distance
+from fri_oo import plotter
 
 class IrrTimeSamp(Simulation):
     """

@@ -51,10 +51,19 @@
 <code class="descclassname">plotter.</code><code class="descname">delete_data</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#plotter.delete_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function is used to delete the stored data in the <em>results</em> file</p>
 <p>To know what are the currently stored simulations, run retrieve_data().</p>
-<dl class="docutils">
-<dt>name: str</dt>
-<dd>name of the simulation that needs to be deleted.</dd>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>name: str</strong></dt>
+<dd><p class="first last">name of the simulation that needs to be deleted.</p>
+</dd>
 </dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -63,28 +72,51 @@
 <dd><p>retrieves dictionary of given simulation name</p>
 <p>The name of the simulation was given when using <em>save_results</em> on the object.
 To see the currently saved results, run retrieve_data()</p>
-<dl class="docutils">
-<dt>name: str</dt>
-<dd>name of the wanted simulation</dd>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>name: str</strong></dt>
+<dd><p class="first last">name of the wanted simulation</p>
+</dd>
 </dl>
-<dl class="docutils">
-<dt>dic</dt>
-<dd>the corresponding dictionary</dd>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>dic</strong></dt>
+<dd><p class="first last">the corresponding dictionary</p>
+</dd>
 </dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="plotter.plot_data">
 <code class="descclassname">plotter.</code><code class="descname">plot_data</code><span class="sig-paren">(</span><em>name</em>, <em>save_fig=False</em>, <em>fig_format='png'</em><span class="sig-paren">)</span><a class="headerlink" href="#plotter.plot_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method used to plot data directly from the <em>results</em> file</p>
-<dl class="docutils">
-<dt>name: str</dt>
-<dd>name of the reconstruction</dd>
-<dt>save_fig: bool</dt>
-<dd>saves the plots if True is given.</dd>
-<dt>fig_format: str</dt>
-<dd>specifies the fig format, using matplotlib.pyplot.savefig.</dd>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>name: str</strong></dt>
+<dd><p class="first last">name of the reconstruction</p>
+</dd>
+<dt><strong>save_fig: bool</strong></dt>
+<dd><p class="first last">saves the plots if True is given.</p>
+</dd>
+<dt><strong>fig_format: str</strong></dt>
+<dd><p class="first last">specifies the fig format, using matplotlib.pyplot.savefig.</p>
+</dd>
 </dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -92,14 +124,25 @@ To see the currently saved results, run retrieve_data()</p>
 <code class="descclassname">plotter.</code><code class="descname">plot_four_samp</code><span class="sig-paren">(</span><em>name</em>, <em>save_fig</em>, <em>fig_format</em><span class="sig-paren">)</span><a class="headerlink" href="#plotter.plot_four_samp" title="Permalink to this definition">¶</a></dt>
 <dd><p>plotter for the IrrFourSamp class</p>
 <p>This plotter plots plots the results of the named reconstruction.</p>
-<dl class="docutils">
-<dt>name: str</dt>
-<dd>name of the reconstruction</dd>
-<dt>save_fig: bool</dt>
-<dd>saves the plots if True is given.</dd>
-<dt>fig_format: str</dt>
-<dd>specifies the fig format, using matplotlib.pyplot.savefig.</dd>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>name: str</strong></dt>
+<dd><p class="first last">name of the reconstruction</p>
+</dd>
+<dt><strong>save_fig: bool</strong></dt>
+<dd><p class="first last">saves the plots if True is given.</p>
+</dd>
+<dt><strong>fig_format: str</strong></dt>
+<dd><p class="first last">specifies the fig format, using matplotlib.pyplot.savefig.</p>
+</dd>
 </dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -107,14 +150,25 @@ To see the currently saved results, run retrieve_data()</p>
 <code class="descclassname">plotter.</code><code class="descname">plot_friCurve</code><span class="sig-paren">(</span><em>name</em>, <em>save_fig</em>, <em>fig_format</em><span class="sig-paren">)</span><a class="headerlink" href="#plotter.plot_friCurve" title="Permalink to this definition">¶</a></dt>
 <dd><p>plotter for the IrrFourSamp class</p>
 <p>This plotter plots plots the results of the named reconstruction.</p>
-<dl class="docutils">
-<dt>name: str</dt>
-<dd>name of the reconstruction</dd>
-<dt>save_fig: bool</dt>
-<dd>saves the plots if True is given.</dd>
-<dt>fig_format: str</dt>
-<dd>specifies the fig format, using matplotlib.pyplot.savefig.</dd>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>name: str</strong></dt>
+<dd><p class="first last">name of the reconstruction</p>
+</dd>
+<dt><strong>save_fig: bool</strong></dt>
+<dd><p class="first last">saves the plots if True is given.</p>
+</dd>
+<dt><strong>fig_format: str</strong></dt>
+<dd><p class="first last">specifies the fig format, using matplotlib.pyplot.savefig.</p>
+</dd>
 </dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -123,24 +177,44 @@ To see the currently saved results, run retrieve_data()</p>
 <dd><p>plotter for the irrTimeSamp class</p>
 <p>This plotter plots plots the results of the named reconstruction.
 It also plots the original diracs and signal if default G matrix and a measurements were given.</p>
-<dl class="docutils">
-<dt>name: str</dt>
-<dd>name of the reconstruction</dd>
-<dt>save_fig: bool</dt>
-<dd>saves the plots if True is given.</dd>
-<dt>fig_format: str</dt>
-<dd>specifies the fig format, using matplotlib.pyplot.savefig.</dd>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>name: str</strong></dt>
+<dd><p class="first last">name of the reconstruction</p>
+</dd>
+<dt><strong>save_fig: bool</strong></dt>
+<dd><p class="first last">saves the plots if True is given.</p>
+</dd>
+<dt><strong>fig_format: str</strong></dt>
+<dd><p class="first last">specifies the fig format, using matplotlib.pyplot.savefig.</p>
+</dd>
 </dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="plotter.retrieve_data">
 <code class="descclassname">plotter.</code><code class="descname">retrieve_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plotter.retrieve_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>this method is used to display the data stored in the <em>results</em> file</p>
-<dl class="docutils">
-<dt>data_names: list</dt>
-<dd>list of the names of all the saved results</dd>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>data_names: list</strong></dt>
+<dd><p class="first last">list of the names of all the saved results</p>
+</dd>
 </dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>

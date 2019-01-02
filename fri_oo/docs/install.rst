@@ -9,20 +9,22 @@ Installation
 
 To install the package, first clone the repository into a folder::
 
-    git clone https://c4science.ch/source/FRIsOO.git
+    git clone https://github.com/LeoSerena/FRI_oo.git
 
 Then go in the directory::
 
     cd fri_oo
 
-now install the package using pip::
+The installation file are in the dist folder.
+
+Now install the package using pip::
 
     pip install .
 
 Remarks
 -------
 
-The needed dependencies should automatically install themselfs, namely: *numpy*, *scipy*, *matplotlib*, *joblib* and *pandas*.
+The needed dependencies should automatically install, namely: *numpy*, *scipy*, *matplotlib*, *joblib* and *pandas*.
 To manually install them using anaconda::
 
     $ conda activate [env]

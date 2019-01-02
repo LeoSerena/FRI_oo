@@ -1,0 +1,310 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>irr_time_samp API &#8212; Python Module for Finite Rate of Innovation (FRI) sampling 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="irr_four_samp API" href="irr_four_samp_automodule.html" />
+    <link rel="prev" title="Simulation API" href="simulation_automodule.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Python Module for Finite Rate of Innovation (FRI) sampling 1.0.0 documentation</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="simulation_automodule.html" title="Simulation API"
+             accesskey="P">previous</a> |
+          <a href="irr_four_samp_automodule.html" title="irr_four_samp API"
+             accesskey="N">next</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="irr-time-samp-api">
+<h1>irr_time_samp API<a class="headerlink" href="#irr-time-samp-api" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="irr_time_samp.IrrTimeSamp">
+<em class="property">class </em><code class="descclassname">irr_time_samp.</code><code class="descname">IrrTimeSamp</code><span class="sig-paren">(</span><em>K</em>, <em>tau</em>, <em>B</em>, <em>L</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_time_samp.IrrTimeSamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>simuation of irregular time samples simulation reconstruction</p>
+<dl class="method">
+<dt id="irr_time_samp.IrrTimeSamp.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>K</em>, <em>tau</em>, <em>B</em>, <em>L</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_time_samp.IrrTimeSamp.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>K: int</strong></dt>
+<dd><p class="first last">number of diracs</p>
+</dd>
+<dt><strong>tau: float</strong></dt>
+<dd><p class="first last">period</p>
+</dd>
+<dt><strong>B: float</strong></dt>
+<dd><p class="first last">bandwidth</p>
+</dd>
+<dt><strong>L: int</strong></dt>
+<dd><p class="first last">number of samples</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="irr_time_samp.IrrTimeSamp.add_noise">
+<code class="descname">add_noise</code><span class="sig-paren">(</span><em>P=inf</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_time_samp.IrrTimeSamp.add_noise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method for addition of noise to signal</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>P: float</strong></dt>
+<dd><p class="first last">SNR ratio in db</p>
+</dd>
+<dt><strong>noiseless: ndarray</strong></dt>
+<dd><p class="first last">signal without noise</p>
+</dd>
+<dt><strong>complex: bool</strong></dt>
+<dd><p class="first last">True if needs a imaginary noise addition, for Fourier domain samples</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>withNoise: ndarray</strong></dt>
+<dd><p class="first last">the signal with noise</p>
+</dd>
+<dt><strong>noise_level: float</strong></dt>
+<dd><p class="first last">the noise_level</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="irr_time_samp.IrrTimeSamp.create_samples">
+<em class="property">static </em><code class="descname">create_samples</code><span class="sig-paren">(</span><em>L</em>, <em>tau</em>, <em>Tmax</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_time_samp.IrrTimeSamp.create_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the L time samples of x(t)</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="irr_time_samp.IrrTimeSamp.dir_loc">
+<em class="property">static </em><code class="descname">dir_loc</code><span class="sig-paren">(</span><em>K</em>, <em>tau</em>, <em>L</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_time_samp.IrrTimeSamp.dir_loc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Diracs locations generator</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="irr_time_samp.IrrTimeSamp.fourier_coeff">
+<em class="property">static </em><code class="descname">fourier_coeff</code><span class="sig-paren">(</span><em>ak</em>, <em>tk</em>, <em>B</em>, <em>tau</em>, <em>t_samp</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_time_samp.IrrTimeSamp.fourier_coeff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computation of noiseless Fourier series coefficients</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="irr_time_samp.IrrTimeSamp.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><em>save_fig=False</em>, <em>fig_format='png'</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_time_samp.IrrTimeSamp.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plotting method of the results</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">save_fig:</th><td class="field-body">boolean corresponding if the plot has to be saved or not</td>
+</tr>
+<tr class="field-even field"><th class="field-name">fig_format:</th><td class="field-body">the image format with which the file will be stored if save_fig is True</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="irr_time_samp.IrrTimeSamp.reconstruction">
+<code class="descname">reconstruction</code><span class="sig-paren">(</span><em>stop_cri='max_iter'</em>, <em>max_ini=100</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_time_samp.IrrTimeSamp.reconstruction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main method of the clas. This reconstructs the signal according to the algorithm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>stop_cri: str</strong></dt>
+<dd><p class="first last">the stopping criteria of the algorithm, can either be <em>mse</em> or <em>max_iter</em></p>
+</dd>
+<dt><strong>max_ini: int</strong></dt>
+<dd><p class="first last">maximum number of random initialisations</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="irr_time_samp.IrrTimeSamp.save_results">
+<code class="descname">save_results</code><span class="sig-paren">(</span><em>simName</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_time_samp.IrrTimeSamp.save_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>save the results to the <em>results</em> file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>simName: str</strong></dt>
+<dd><p class="first last">string naming the file</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="irr_time_samp.IrrTimeSamp.setup">
+<code class="descname">setup</code><span class="sig-paren">(</span><em>G=None</em>, <em>a=None</em><span class="sig-paren">)</span><a class="headerlink" href="#irr_time_samp.IrrTimeSamp.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup the measurements a and the linear matrix G. If one of them isn’t given, 
+function sets up random measurements a according to a Poisson distribution</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>G: numpy.ndarray</strong></dt>
+<dd><p class="first last">linear mapping between the sampled signal and the measurements, (<em>L</em> x <em>M</em>) matrix</p>
+</dd>
+<dt><strong>a: numpy.ndarray</strong></dt>
+<dd><p class="first last">(<em>L</em> x <em>2</em>) matrix. First column are the time and second the amplitude of the measurements.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="irr_time_samp.IrrTimeSamp.show_results">
+<code class="descname">show_results</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#irr_time_samp.IrrTimeSamp.show_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints the some results after performing FRI reconstruction</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>pandas.DataFrame</strong></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../auto-module.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="simulation_automodule.html">Simulation API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">irr_time_samp API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="irr_four_samp_automodule.html">irr_four_samp API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotter_automodule.html">plotter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fri_curve_automodule.html">fri_curve API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../howToUse.html">How To Use package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">README</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="simulation_automodule.html" title="Simulation API"
+              >previous</a> |
+            <a href="irr_four_samp_automodule.html" title="irr_four_samp API"
+              >next</a> |
+            <a href="../py-modindex.html" title="Python Module Index"
+              >modules</a> |
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/automodule/irr_time_samp_automodule.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Serena Leo.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

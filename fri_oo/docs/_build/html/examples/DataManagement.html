@@ -1,0 +1,168 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Data Management &#8212; Python Module for Finite Rate of Innovation (FRI) sampling 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Installation" href="../install.html" />
+    <link rel="prev" title="FRI Curve Reconstruction" href="fri_curve.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Python Module for Finite Rate of Innovation (FRI) sampling 1.0.0 documentation</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="fri_curve.html" title="FRI Curve Reconstruction"
+             accesskey="P">previous</a> |
+          <a href="../install.html" title="Installation"
+             accesskey="N">next</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="data-management">
+<h1>Data Management<a class="headerlink" href="#data-management" title="Permalink to this headline">¶</a></h1>
+<p>This file explains how to manage saved data from the <strong>results</strong> file.</p>
+<p>First, we need to import the plotter module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fri_oo</span> <span class="k">import</span> <span class="n">plotter</span>
+</pre></div>
+</div>
+<div class="section" id="retrieve-data">
+<h2>retrieve_data()<a class="headerlink" href="#retrieve-data" title="Permalink to this headline">¶</a></h2>
+<p>Returns the list of the names of the saved reconstructions in the <strong>results</strong> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plotter</span><span class="o">.</span><span class="n">retrive_data</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>[‘ITS_example’, ‘IFS_example’, ‘FRI_Curve_example’]</p>
+</div>
+<div class="section" id="fetch-data-name-str">
+<h2>fetch_data(name: str)<a class="headerlink" href="#fetch-data-name-str" title="Permalink to this headline">¶</a></h2>
+<p>Returns the dictionary of the requested reconstruction:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plotter</span><span class="o">.</span><span class="n">fetch_data</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="plot-data-name-str">
+<h2>plot_data(name: str)<a class="headerlink" href="#plot-data-name-str" title="Permalink to this headline">¶</a></h2>
+<p>Plots the requested data, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plotter</span><span class="o">.</span><span class="n">plot_data</span><span class="p">(</span><span class="s1">&#39;ITS_example&#39;</span><span class="p">)</span> <span class="c1"># or plotter.plot_data(plotter.retrieve_data()[0])</span>
+</pre></div>
+</div>
+<img alt="../_images/ITS_noisy_diracs.jpg" src="../_images/ITS_noisy_diracs.jpg" />
+<img alt="../_images/ITS_noisy_cont.jpg" src="../_images/ITS_noisy_cont.jpg" />
+</div>
+<div class="section" id="delete-data-name-str">
+<h2>delete_data(name: str)<a class="headerlink" href="#delete-data-name-str" title="Permalink to this headline">¶</a></h2>
+<p>Deletes the given reconstruction from the results file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plotter</span><span class="o">.</span><span class="n">retrive_data</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>[‘ITS_example’, ‘IFS_example’, ‘FRI_Curve_example’]</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plotter</span><span class="o">.</span><span class="n">delete_data</span><span class="p">(</span><span class="s1">&#39;ITS_example&#39;</span><span class="p">)</span>
+
+<span class="n">plotter</span><span class="o">.</span><span class="n">retrieve_data</span><span class="p">()</span>
+
+<span class="n">plotter</span><span class="o">.</span><span class="n">retrive_data</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>[‘IFS_example’, ‘FRI_Curve_example’]</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../auto-module.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../howToUse.html">How To Use package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="irr_time_samp.html">Irregular Time Sampling Reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="irr_four_samp.html">Irregular Fourier Sampling Reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fri_curve.html">FRI Curve Reconstruction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Data Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#retrieve-data">retrieve_data()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fetch-data-name-str">fetch_data(name: str)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plot-data-name-str">plot_data(name: str)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delete-data-name-str">delete_data(name: str)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">README</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="fri_curve.html" title="FRI Curve Reconstruction"
+              >previous</a> |
+            <a href="../install.html" title="Installation"
+              >next</a> |
+            <a href="../py-modindex.html" title="Python Module Index"
+              >modules</a> |
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/examples/DataManagement.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Serena Leo.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

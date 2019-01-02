@@ -1,0 +1,176 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>FRI Curve Reconstruction &#8212; Python Module for Finite Rate of Innovation (FRI) sampling 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Management" href="DataManagement.html" />
+    <link rel="prev" title="Irregular Fourier Sampling Reconstruction" href="irr_four_samp.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Python Module for Finite Rate of Innovation (FRI) sampling 1.0.0 documentation</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="irr_four_samp.html" title="Irregular Fourier Sampling Reconstruction"
+             accesskey="P">previous</a> |
+          <a href="DataManagement.html" title="Data Management"
+             accesskey="N">next</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="fri-curve-reconstruction">
+<h1>FRI Curve Reconstruction<a class="headerlink" href="#fri-curve-reconstruction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="fri-curve-reconstruction-theory">
+<h2>FRI Curve Reconstruction Theory<a class="headerlink" href="#fri-curve-reconstruction-theory" title="Permalink to this headline">¶</a></h2>
+<p>Consider an interior image indicator associated with a curve</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}I_C (x,y) = \begin{cases}
+                1, (x,y) \in C^o \\
+                0, otherwise
+            \end{cases}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(C^o\)</span> is the interior of the curve C.</p>
+<p>The goal is to reconstruct the curve locations in continuous domain from a set of ideally lowpass filtered samples of the image <span class="math notranslate nohighlight">\(I_C(x,y)\)</span>.</p>
+<p>We know that the Wirtinger derivative (<span class="math notranslate nohighlight">\(\partial = \frac{\partial}{\partial x} + j \frac{\partial}{\partial y}\)</span>) is a sum of sinusoids.</p>
+<p>So the 2D Fourier transform of the derivative satisfies the anihilation equations.</p>
+<div class="math notranslate nohighlight">
+\[c_{k,l} * \hat{\partial I}_{k,l} = 0\]</div>
+<div class="math notranslate nohighlight">
+\[where\ \hat{\partial I}_{k,l} = (\frac{2 \pi k}{\tau_1} + j \frac{2 \pi l}{\tau_2}) \hat{I}_C(\frac{2 \pi k}{\tau_1},\frac{2 \pi l}{\tau_2})\]</div>
+<p>The method is then basically the same as for <a class="reference internal" href="irr_time_samp.html#irregular-time-sample-theory"><span class="std std-ref">Irregular Time Sample Theory</span></a>.</p>
+</div>
+<div class="section" id="fri-curve-reconstruction-application">
+<h2>FRI Curve Reconstruction Application<a class="headerlink" href="#fri-curve-reconstruction-application" title="Permalink to this headline">¶</a></h2>
+<p>Let’s see how to use the algorithm for reconstructing FRI Curves.</p>
+<div class="section" id="basic-example">
+<h3>basic example<a class="headerlink" href="#basic-example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fri_oo.fri_curve</span> <span class="k">import</span> <span class="n">FriCurve</span> <span class="k">as</span> <span class="n">FRIC</span>
+
+<span class="n">tau_x</span> <span class="o">=</span> <span class="mi">1</span>            <span class="c1"># period on x axis</span>
+<span class="n">tau_y</span> <span class="o">=</span> <span class="mi">1</span>            <span class="c1"># period on y axis</span>
+
+<span class="n">friCurve</span> <span class="o">=</span> <span class="n">FRIC</span><span class="p">(</span><span class="n">tau_x</span><span class="p">,</span> <span class="n">tau_y</span><span class="p">)</span> <span class="c1"># instantiation</span>
+
+<span class="n">M0</span> <span class="o">=</span> <span class="mi">22</span>              <span class="c1"># number of samples in x axis</span>
+<span class="n">N0</span> <span class="o">=</span> <span class="mi">22</span>              <span class="c1"># number of samples in y axis</span>
+<span class="n">P</span> <span class="o">=</span> <span class="mi">5</span>                <span class="c1"># SRN ratio in dB</span>
+<span class="n">B_x</span> <span class="o">=</span> <span class="mi">25</span>             <span class="c1"># bandwidth in x axis</span>
+<span class="n">B_y</span> <span class="o">=</span> <span class="mi">25</span>             <span class="c1"># bandwidth in y axis</span>
+
+<span class="n">friCurve</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">M0</span><span class="p">,</span> <span class="n">N0</span><span class="p">,</span> <span class="n">B_x</span><span class="p">,</span> <span class="n">B_y</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
+
+<span class="n">friCurve</span><span class="o">.</span><span class="n">reconstruction</span><span class="p">(</span><span class="n">max_ini</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>Proposed Approach</em></p>
+<p><em>Standard deviation of the reconstructed curve coefficients error: 0.0618</em></p>
+<p><em>SNR of the reconstructed curve coefficients: 24.0753[dB]</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">friCurve</span><span class="o">.</span><span class="n">save_results</span><span class="p">(</span><span class="s1">&#39;friCurve&#39;</span><span class="p">)</span>
+<span class="n">friCurve</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/friCurve_FRIC.jpg" src="../_images/friCurve_FRIC.jpg" />
+<img alt="../_images/propApproach.jpg" src="../_images/propApproach.jpg" />
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../auto-module.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../howToUse.html">How To Use package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="irr_time_samp.html">Irregular Time Sampling Reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="irr_four_samp.html">Irregular Fourier Sampling Reconstruction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FRI Curve Reconstruction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fri-curve-reconstruction-theory">FRI Curve Reconstruction Theory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fri-curve-reconstruction-application">FRI Curve Reconstruction Application</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-example">basic example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="DataManagement.html">Data Management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">README</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="irr_four_samp.html" title="Irregular Fourier Sampling Reconstruction"
+              >previous</a> |
+            <a href="DataManagement.html" title="Data Management"
+              >next</a> |
+            <a href="../py-modindex.html" title="Python Module Index"
+              >modules</a> |
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/examples/fri_curve.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Serena Leo.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

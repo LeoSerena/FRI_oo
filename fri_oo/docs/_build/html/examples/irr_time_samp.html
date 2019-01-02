@@ -1,0 +1,345 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Irregular Time Sampling Reconstruction &#8212; Python Module for Finite Rate of Innovation (FRI) sampling 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Irregular Fourier Sampling Reconstruction" href="irr_four_samp.html" />
+    <link rel="prev" title="How To Use package" href="../howToUse.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Python Module for Finite Rate of Innovation (FRI) sampling 1.0.0 documentation</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../howToUse.html" title="How To Use package"
+             accesskey="P">previous</a> |
+          <a href="irr_four_samp.html" title="Irregular Fourier Sampling Reconstruction"
+             accesskey="N">next</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="irregular-time-sampling-reconstruction">
+<h1>Irregular Time Sampling Reconstruction<a class="headerlink" href="#irregular-time-sampling-reconstruction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="irregular-time-sample-theory">
+<h2>Irregular Time Sample Theory<a class="headerlink" href="#irregular-time-sample-theory" title="Permalink to this headline">¶</a></h2>
+<p>As a reconstruction algorithm, we want to reconstruct a periodic signal represented by the sum of stream of diracs</p>
+<div class="math notranslate nohighlight">
+\[\sum_{k' \in Z} \sum_{k = 1}^{K} \alpha_{k} \delta (t - t_k - k' \tau)\]</div>
+<p>Where the <span class="math notranslate nohighlight">\(t_k\)</span> and the <span class="math notranslate nohighlight">\(a_k\)</span> are the unknown. The measurements are sampled as</p>
+<div class="math notranslate nohighlight">
+\[y_l = \sum_{k=1}^K \varphi (t_{l}' - t_k), l \in 1,...,L\]</div>
+<p>and <span class="math notranslate nohighlight">\(\varphi(t) = \frac{sin(\pi B t)}{B \tau sin(\pi t / \tau)}\)</span> is the dirichlet kernel where B is the bandwidth.</p>
+<p>The Fourier transform of the signal x(t) is (since it is a repeating signal)</p>
+<div class="math notranslate nohighlight">
+\[\hat{x}_m = \frac{1}{\tau} \sum_{k=1}^K a_k e^{-j \frac{2 \pi m}{\tau} t_k}\]</div>
+<p>The measurements are thus related to <span class="math notranslate nohighlight">\(\hat{x}_m\)</span> by a linear equation G</p>
+<div class="math notranslate nohighlight">
+\[y_l = \sum_{ | m | &lt; \lfloor \frac{\tau B}{2} \rfloor} \hat{x}_m e^{-j \frac{2 \pi m}{\tau} t_l'}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}G =
+\begin{bmatrix}
+e^{-j \frac{2 \pi (-M)}{\tau} t_1'} &amp; e^{-j \frac{2 \pi (-M+1)}{\tau} t_1'} &amp; ... &amp; e^{-j \frac{2 \pi M}{\tau} t_1'} \\
+e^{-j \frac{2 \pi (-M)}{\tau} t_2'} &amp; e^{-j \frac{2 \pi (-M+1)}{\tau} t_2'} &amp; ... &amp; e^{-j \frac{2 \pi M}{\tau} t_2'} \\
+... &amp; ... &amp; ... &amp; ... \\
+e^{-j \frac{2 \pi (-M)}{\tau} t_L'} &amp; e^{-j \frac{2 \pi (-M+1)}{\tau} t_L'} &amp; ... &amp; e^{-j \frac{2 \pi M}{\tau} t_L'}\\
+\end{bmatrix}\end{split}\]</div>
+<p>for <span class="math notranslate nohighlight">\(M = \lfloor \frac{\tau B}{2} \rfloor\)</span></p>
+<p>By knowing this and using the annihilating filter, the problem is then a constrained minimization</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}min_{b,c \in C} || a - Gb ||^2 \\
+subject\ to\ b * c = 0\end{split}\]</div>
+<dl class="docutils">
+<dt>where</dt>
+<dd><ul class="first last simple">
+<li><strong>a</strong> is the column vector of the measurements</li>
+<li><strong>b</strong> is the column vector of the sampled signal</li>
+<li><strong>c</strong> is the annihilationg filter</li>
+<li>G is the linear mapping as explained above</li>
+</ul>
+</dd>
+</dl>
+<p>In the noisy case, the reconstruction can’t be perfect anymore and has to be consistent with the noise level <span class="math notranslate nohighlight">\(\epsilon^2\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}find\ b,c \in C \\
+subject\ to\ b * c = 0, \\
+|| a - Gb ||^2 &lt; \epsilon^2 \\\end{split}\]</div>
+<p>This is achievable because b is a FRI signal.</p>
+<p>For more information about the algorithm, see the <a class="reference external" href="https://infoscience.epfl.ch/record/222498/files/article.pdf?version=5">original paper</a> .</p>
+</div>
+<div class="section" id="irregular-time-sample-applications">
+<h2>Irregular Time Sample Applications<a class="headerlink" href="#irregular-time-sample-applications" title="Permalink to this headline">¶</a></h2>
+<p>Let’s see how to use this algorithm for time domain samples.
+First, install the package, see <a class="reference internal" href="../install.html#installation"><span class="std std-ref">Installation</span></a> page.</p>
+<div class="section" id="noiseless-example">
+<h3>Noiseless Example<a class="headerlink" href="#noiseless-example" title="Permalink to this headline">¶</a></h3>
+<p>Reconstruction setup:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fri_oo.irr_time_samp</span> <span class="k">import</span> <span class="n">IrrTimeSamp</span> <span class="k">as</span> <span class="n">ITS</span>
+
+<span class="n">K</span> <span class="o">=</span> <span class="mi">5</span>                                   <span class="c1"># number of diracs</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="mf">1.</span>                                <span class="c1"># period of the signal</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">K</span>                                   <span class="c1"># we don&#39;t need to oversample since it is a noiseless example</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">M</span> <span class="o">+</span> <span class="mi">1</span>                           <span class="c1"># number of measurements</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.</span> <span class="o">*</span> <span class="n">M</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>                        <span class="c1"># bandwidth</span>
+<span class="n">its_noiseless</span> <span class="o">=</span> <span class="n">ITS</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">its_noiseless</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>                   <span class="c1"># in this example, we use the built-in signal generator</span>
+<span class="n">its_noiseless</span><span class="o">.</span><span class="n">add_noise</span><span class="p">()</span>               <span class="c1"># we don&#39;t add any noise</span>
+</pre></div>
+</div>
+<p>Reconstruction:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">its_noiseless</span><span class="o">.</span><span class="n">reconstruction</span><span class="p">()</span>          <span class="c1"># this will apply the reconstruction with default parameters</span>
+</pre></div>
+</div>
+<p>the reconstructed diracs can then be displayed using panda by using <em>show_results</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">its_noiselss</span><span class="o">.</span><span class="n">show_results</span><span class="p">()</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="29%" />
+<col width="21%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">original tk</th>
+<th class="head">reconstructed tk</th>
+<th class="head">original ak</th>
+<th class="head">reconstructed ak</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0.121755</td>
+<td>0.121755</td>
+<td>1.197991</td>
+<td>1.197991</td>
+</tr>
+<tr class="row-odd"><td>0.136733</td>
+<td>0.136733</td>
+<td>-0.591423</td>
+<td>-0.591423</td>
+</tr>
+<tr class="row-even"><td>0.189521</td>
+<td>0.189521</td>
+<td>-1.027550</td>
+<td>-1.027550</td>
+</tr>
+<tr class="row-odd"><td>0.509655</td>
+<td>0.509655</td>
+<td>1.330009</td>
+<td>1.330009</td>
+</tr>
+<tr class="row-even"><td>0.853141</td>
+<td>0.853141</td>
+<td>0.554392</td>
+<td>0.554392</td>
+</tr>
+</tbody>
+</table>
+<p>to recover the <span class="math notranslate nohighlight">\(a_k\)</span> and <span class="math notranslate nohighlight">\(t_k\)</span> reconstructed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ak</span> <span class="o">=</span> <span class="n">its_noiseless</span><span class="o">.</span><span class="n">ak_recon</span>
+<span class="n">tk</span> <span class="o">=</span> <span class="n">its_noiseless</span><span class="o">.</span><span class="n">tk_recon</span>
+</pre></div>
+</div>
+<p>to plot the result (here we also have the original signal), we first save them:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">its_noiseless</span><span class="o">.</span><span class="n">save_results</span><span class="p">(</span><span class="s2">&quot;its_noiseless&quot;</span><span class="p">)</span>  <span class="c1"># saved to the result file</span>
+<span class="n">its_noiseless</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/ITS_noiseless_diracs.jpg" src="../_images/ITS_noiseless_diracs.jpg" />
+<img alt="../_images/ITS_noiseless_cont.jpg" src="../_images/ITS_noiseless_cont.jpg" />
+<p>To see how to manage results: <a class="reference internal" href="DataManagement.html#data-management"><span class="std std-ref">Data Management</span></a></p>
+</div>
+<div class="section" id="noisy-example">
+<h3>Noisy Example<a class="headerlink" href="#noisy-example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">K</span> <span class="o">*</span> <span class="mi">8</span>                                   <span class="c1"># we need to oversample the signal since we add noise</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">M</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.</span> <span class="o">*</span> <span class="n">M</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="mi">5</span>                                       <span class="c1"># signal to noise ratio in dB</span>
+
+<span class="n">ITS_noisy</span> <span class="o">=</span> <span class="n">ITS</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">ITS_noisy</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+<span class="n">ITS_noisy</span><span class="o">.</span><span class="n">add_noise</span><span class="p">(</span><span class="n">P</span> <span class="o">=</span> <span class="n">P</span><span class="p">)</span>
+<span class="n">ITS_noisy</span><span class="o">.</span><span class="n">reconstruction</span><span class="p">(</span><span class="n">max_init</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>     <span class="c1"># here we do only half of the default initialisation</span>
+<span class="n">ITS_noisy</span><span class="o">.</span><span class="n">save_results</span><span class="p">(</span><span class="s2">&quot;ITS_noisy_example&quot;</span><span class="p">)</span>
+<span class="n">ITS_noisy</span><span class="o">.</span><span class="n">show_results</span><span class="p">()</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="29%" />
+<col width="21%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">original tk</th>
+<th class="head">reconstructed tk</th>
+<th class="head">original ak</th>
+<th class="head">reconstructed ak</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0.076222</td>
+<td>0.075616</td>
+<td>1.163884</td>
+<td>1.258038</td>
+</tr>
+<tr class="row-odd"><td>0.237510</td>
+<td>0.236998</td>
+<td>-0.768787</td>
+<td>-1.073441</td>
+</tr>
+<tr class="row-even"><td>0.575985</td>
+<td>0.514066</td>
+<td>1.490636</td>
+<td>0.646190</td>
+</tr>
+<tr class="row-odd"><td>0.691389</td>
+<td>0.575437</td>
+<td>0.882757</td>
+<td>1.466266</td>
+</tr>
+<tr class="row-even"><td>0.955820</td>
+<td>0.690202</td>
+<td>0.733382</td>
+<td>0.957095</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ITS_noisy</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/ITS_noisy_diracs.jpg" src="../_images/ITS_noisy_diracs.jpg" />
+<img alt="../_images/ITS_noisy_cont.jpg" src="../_images/ITS_noisy_cont.jpg" />
+</div>
+<div class="section" id="parameterized-reconstruction">
+<h3>Parameterized Reconstruction<a class="headerlink" href="#parameterized-reconstruction" title="Permalink to this headline">¶</a></h3>
+<p>In this example we will reconstruct the signal with given measurements and linear mapping G:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">K</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">M</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.</span> <span class="o">*</span> <span class="n">M</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">ITS_param</span> <span class="o">=</span> <span class="n">ITS</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">ITS_param</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">G</span> <span class="o">=</span> <span class="n">G</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="p">)</span>
+<span class="c1"># we give the setup function the corresponding</span>
+    <span class="c1"># a (L x 2 measurements)</span>
+    <span class="c1"># G (L x M linear mapping)</span>
+<span class="n">ITS_param</span><span class="o">.</span><span class="n">add_noise</span><span class="p">()</span>
+<span class="n">ITS_param</span><span class="o">.</span><span class="n">reconstruction</span><span class="p">()</span>
+
+<span class="n">ITS_param</span><span class="o">.</span><span class="n">save_results</span><span class="p">(</span><span class="s2">&quot;ITS_param&quot;</span><span class="p">)</span>
+<span class="n">ITS_param</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/ITS_param_diracs.jpg" src="../_images/ITS_param_diracs.jpg" />
+<img alt="../_images/ITS_param_cont.jpg" src="../_images/ITS_param_cont.jpg" />
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../auto-module.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../howToUse.html">How To Use package</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Irregular Time Sampling Reconstruction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#irregular-time-sample-theory">Irregular Time Sample Theory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#irregular-time-sample-applications">Irregular Time Sample Applications</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#noiseless-example">Noiseless Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#noisy-example">Noisy Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameterized-reconstruction">Parameterized Reconstruction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="irr_four_samp.html">Irregular Fourier Sampling Reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fri_curve.html">FRI Curve Reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DataManagement.html">Data Management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">README</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../howToUse.html" title="How To Use package"
+              >previous</a> |
+            <a href="irr_four_samp.html" title="Irregular Fourier Sampling Reconstruction"
+              >next</a> |
+            <a href="../py-modindex.html" title="Python Module Index"
+              >modules</a> |
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/examples/irr_time_samp.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Serena Leo.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

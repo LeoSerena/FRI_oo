@@ -1,0 +1,22 @@
+.. ############################################################################
+.. install.rst
+.. ===========
+.. Author : Leo Serena [leo.serena@epfl.ch]
+.. ############################################################################
+
+Installation
+============
+
+fri_oo requires pip installed.
+to install, run the following::
+
+    $ python -m pip install --index-url https://test.pypi.org/simple/ fri_oo
+
+Remarks
+-------
+
+There are no auto-install of dependencies. The needed ones are: numpy, scipy, matplotlib, joblib and pandas.
+To install using anaconda::
+
+    $ conda activate [env]
+    $ conda install numpy, scipy, matplotlib, joblib, pandas

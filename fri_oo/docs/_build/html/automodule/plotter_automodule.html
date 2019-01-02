@@ -1,0 +1,289 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>plotter API &#8212; Python Module for Finite Rate of Innovation (FRI) sampling 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fri_curve API" href="fri_curve_automodule.html" />
+    <link rel="prev" title="irr_four_samp API" href="irr_four_samp_automodule.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Python Module for Finite Rate of Innovation (FRI) sampling 1.0.0 documentation</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="irr_four_samp_automodule.html" title="irr_four_samp API"
+             accesskey="P">previous</a> |
+          <a href="fri_curve_automodule.html" title="fri_curve API"
+             accesskey="N">next</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-plotter">
+<span id="plotter-api"></span><h1>plotter API<a class="headerlink" href="#module-plotter" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="plotter.delete_data">
+<code class="descclassname">plotter.</code><code class="descname">delete_data</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#plotter.delete_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is used to delete the stored data in the <em>results</em> file</p>
+<p>To know what are the currently stored simulations, run retrieve_data().</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>name: str</strong></dt>
+<dd><p class="first last">name of the simulation that needs to be deleted.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="plotter.fetch_data">
+<code class="descclassname">plotter.</code><code class="descname">fetch_data</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#plotter.fetch_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>retrieves dictionary of given simulation name</p>
+<p>The name of the simulation was given when using <em>save_results</em> on the object.
+To see the currently saved results, run retrieve_data()</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>name: str</strong></dt>
+<dd><p class="first last">name of the wanted simulation</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>dic</strong></dt>
+<dd><p class="first last">the corresponding dictionary</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="plotter.plot_data">
+<code class="descclassname">plotter.</code><code class="descname">plot_data</code><span class="sig-paren">(</span><em>name</em>, <em>save_fig=False</em>, <em>fig_format='png'</em><span class="sig-paren">)</span><a class="headerlink" href="#plotter.plot_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method used to plot data directly from the <em>results</em> file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>name: str</strong></dt>
+<dd><p class="first last">name of the reconstruction</p>
+</dd>
+<dt><strong>save_fig: bool</strong></dt>
+<dd><p class="first last">saves the plots if True is given.</p>
+</dd>
+<dt><strong>fig_format: str</strong></dt>
+<dd><p class="first last">specifies the fig format, using matplotlib.pyplot.savefig.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="plotter.plot_four_samp">
+<code class="descclassname">plotter.</code><code class="descname">plot_four_samp</code><span class="sig-paren">(</span><em>name</em>, <em>save_fig</em>, <em>fig_format</em><span class="sig-paren">)</span><a class="headerlink" href="#plotter.plot_four_samp" title="Permalink to this definition">¶</a></dt>
+<dd><p>plotter for the IrrFourSamp class</p>
+<p>This plotter plots plots the results of the named reconstruction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>name: str</strong></dt>
+<dd><p class="first last">name of the reconstruction</p>
+</dd>
+<dt><strong>save_fig: bool</strong></dt>
+<dd><p class="first last">saves the plots if True is given.</p>
+</dd>
+<dt><strong>fig_format: str</strong></dt>
+<dd><p class="first last">specifies the fig format, using matplotlib.pyplot.savefig.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="plotter.plot_friCurve">
+<code class="descclassname">plotter.</code><code class="descname">plot_friCurve</code><span class="sig-paren">(</span><em>name</em>, <em>save_fig</em>, <em>fig_format</em><span class="sig-paren">)</span><a class="headerlink" href="#plotter.plot_friCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>plotter for the IrrFourSamp class</p>
+<p>This plotter plots plots the results of the named reconstruction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>name: str</strong></dt>
+<dd><p class="first last">name of the reconstruction</p>
+</dd>
+<dt><strong>save_fig: bool</strong></dt>
+<dd><p class="first last">saves the plots if True is given.</p>
+</dd>
+<dt><strong>fig_format: str</strong></dt>
+<dd><p class="first last">specifies the fig format, using matplotlib.pyplot.savefig.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="plotter.plot_irreg_samp">
+<code class="descclassname">plotter.</code><code class="descname">plot_irreg_samp</code><span class="sig-paren">(</span><em>name</em>, <em>save_fig</em>, <em>fig_format</em><span class="sig-paren">)</span><a class="headerlink" href="#plotter.plot_irreg_samp" title="Permalink to this definition">¶</a></dt>
+<dd><p>plotter for the irrTimeSamp class</p>
+<p>This plotter plots plots the results of the named reconstruction.
+It also plots the original diracs and signal if default G matrix and a measurements were given.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>name: str</strong></dt>
+<dd><p class="first last">name of the reconstruction</p>
+</dd>
+<dt><strong>save_fig: bool</strong></dt>
+<dd><p class="first last">saves the plots if True is given.</p>
+</dd>
+<dt><strong>fig_format: str</strong></dt>
+<dd><p class="first last">specifies the fig format, using matplotlib.pyplot.savefig.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="plotter.retrieve_data">
+<code class="descclassname">plotter.</code><code class="descname">retrieve_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plotter.retrieve_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>this method is used to display the data stored in the <em>results</em> file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>data_names: list</strong></dt>
+<dd><p class="first last">list of the names of all the saved results</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../auto-module.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="simulation_automodule.html">Simulation API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="irr_time_samp_automodule.html">irr_time_samp API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="irr_four_samp_automodule.html">irr_four_samp API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">plotter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fri_curve_automodule.html">fri_curve API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../howToUse.html">How To Use package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">README</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="irr_four_samp_automodule.html" title="irr_four_samp API"
+              >previous</a> |
+            <a href="fri_curve_automodule.html" title="fri_curve API"
+              >next</a> |
+            <a href="../py-modindex.html" title="Python Module Index"
+              >modules</a> |
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/automodule/plotter_automodule.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Serena Leo.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

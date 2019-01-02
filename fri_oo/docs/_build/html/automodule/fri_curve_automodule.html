@@ -1,0 +1,252 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>fri_curve API &#8212; Python Module for Finite Rate of Innovation (FRI) sampling 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How To Use package" href="../howToUse.html" />
+    <link rel="prev" title="plotter API" href="plotter_automodule.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Python Module for Finite Rate of Innovation (FRI) sampling 1.0.0 documentation</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="plotter_automodule.html" title="plotter API"
+             accesskey="P">previous</a> |
+          <a href="../howToUse.html" title="How To Use package"
+             accesskey="N">next</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="fri-curve-api">
+<h1>fri_curve API<a class="headerlink" href="#fri-curve-api" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="fri_curve.FriCurve">
+<em class="property">class </em><code class="descclassname">fri_curve.</code><code class="descname">FriCurve</code><span class="sig-paren">(</span><em>tau_x</em>, <em>tau_y</em><span class="sig-paren">)</span><a class="headerlink" href="#fri_curve.FriCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>FRI curve reconstruction</p>
+<dl class="method">
+<dt id="fri_curve.FriCurve.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>tau_x</em>, <em>tau_y</em><span class="sig-paren">)</span><a class="headerlink" href="#fri_curve.FriCurve.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>tau_x: float</strong></dt>
+<dd><p class="first last">period on x axis</p>
+</dd>
+<dt><strong>tau_y: float</strong></dt>
+<dd><p class="first last">period on y axis</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fri_curve.FriCurve.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><em>save_fig=False</em>, <em>fig_format='png'</em><span class="sig-paren">)</span><a class="headerlink" href="#fri_curve.FriCurve.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>plotter for the FRI curve</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>save_fig: bool</strong></dt>
+<dd><p class="first last">saves the file is is True</p>
+</dd>
+<dt><strong>fig_format: str</strong></dt>
+<dd><p class="first last">format used if saved</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fri_curve.FriCurve.reconstruction">
+<code class="descname">reconstruction</code><span class="sig-paren">(</span><em>max_ini=20</em>, <em>stop_cri='max_iter'</em>, <em>verbose=False</em>, <em>lsq=False</em>, <em>cadz=False</em>, <em>SLRA=False</em><span class="sig-paren">)</span><a class="headerlink" href="#fri_curve.FriCurve.reconstruction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main method.
+Reconstrucs FRI curve according to requested algorithms.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>max_ini: int</strong></dt>
+<dd><p class="first last">maximum number of random initialisations</p>
+</dd>
+<dt><strong>stop_cri: str</strong></dt>
+<dd><p class="first last">the stopping criteria of the algorithm, can either be <em>mse</em> or <em>max_iter</em></p>
+</dd>
+<dt><strong>verbose: bool</strong></dt>
+<dd><p class="first last">if True outputs curve coefficients and curve coefficients error</p>
+</dd>
+<dt><strong>lsq: bool</strong></dt>
+<dd><p class="first last">if True also runs least squre approximation reconstruction</p>
+</dd>
+<dt><strong>cadz: bool</strong></dt>
+<dd><p class="first last">if True also runs cadzdow method reconstruction</p>
+</dd>
+<dt><strong>SLRA: bool</strong></dt>
+<dd><p class="first last">if True also runs SLRA method reconstruction</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fri_curve.FriCurve.save_results">
+<code class="descname">save_results</code><span class="sig-paren">(</span><em>simName</em><span class="sig-paren">)</span><a class="headerlink" href="#fri_curve.FriCurve.save_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>save results to the <em>results</em> file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>simName: str</strong></dt>
+<dd><p class="first last">string naming the file</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="fri_curve.FriCurve.setup">
+<code class="descname">setup</code><span class="sig-paren">(</span><em>M0</em>, <em>N0</em>, <em>B_x</em>, <em>B_y</em>, <em>P</em><span class="sig-paren">)</span><a class="headerlink" href="#fri_curve.FriCurve.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulation setup</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>M0: int</strong></dt>
+<dd><p class="first last">number of samples in x axis</p>
+</dd>
+<dt><strong>N0: int</strong></dt>
+<dd><p class="first last">number of samples in y axis</p>
+</dd>
+<dt><strong>B_x: int</strong></dt>
+<dd><p class="first last">bandwidth in x axis</p>
+</dd>
+<dt><strong>B_y: int</strong></dt>
+<dd><p class="first last">bandwidth in y axis</p>
+</dd>
+<dt><strong>P: float</strong></dt>
+<dd><p class="first last">SNR in decibel</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../auto-module.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="simulation_automodule.html">Simulation API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="irr_time_samp_automodule.html">irr_time_samp API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="irr_four_samp_automodule.html">irr_four_samp API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotter_automodule.html">plotter API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">fri_curve API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../howToUse.html">How To Use package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">README</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="plotter_automodule.html" title="plotter API"
+              >previous</a> |
+            <a href="../howToUse.html" title="How To Use package"
+              >next</a> |
+            <a href="../py-modindex.html" title="Python Module Index"
+              >modules</a> |
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/automodule/fri_curve_automodule.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Serena Leo.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

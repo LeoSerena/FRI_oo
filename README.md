@@ -5,4 +5,4 @@ This package contains a signal processing reconstruction algorithm for `ununifor
 
 the documentation, basic theory and installation guide linked to the package are accessible here:
 
-https://fri-oo.readthedocs.io/en/latest/
+https://fri-oo.readthedocs.io/

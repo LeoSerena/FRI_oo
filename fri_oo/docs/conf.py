@@ -41,7 +41,6 @@ release = '1.0.0'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.mathjax',
-    'numpydoc',
     'sphinx.ext.autosectionlabel']
 
 # Add any paths that contain templates here, relative to this directory.

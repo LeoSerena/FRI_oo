@@ -17,7 +17,6 @@ This package contains a signal processing reconstruction algorithm for `ununifor
     auto-module
     howToUse
     install
-    README
 
 Indices and tables
 ==================

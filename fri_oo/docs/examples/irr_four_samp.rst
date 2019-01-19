@@ -29,7 +29,7 @@ We thus want an approach that performs on non-uniform samples. So we want to int
 
 where :math:`\psi(.)` is a certain interpolation kernel.
 
-By evaluationg the above at :math:`\omega_l`, we establish a linear mapping G between the the measurements **a** and the sampled signal
+By evaluating the above at :math:`\omega_l`, we establish a linear mapping G between the the measurements **a** and the sampled signal
 **b**.
 
 We then perform the same algorithm as in the time domain. See :ref:`Irregular Time Sample Theory`.

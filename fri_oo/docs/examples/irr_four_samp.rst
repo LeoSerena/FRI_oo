@@ -15,12 +15,12 @@ Suppose we have a signal
 .. math::
     x(t) = \sum_{k = 1}^K a_k \delta (t - t_k)
 
-It thus have a Fourier Transform
+It thus has a Fourier Transform
 
 .. math::
     X(\omega) = \sum_{k=1}^K a_k e^{-j \omega t_k}
 
-We now want to recover the signal :math`x(t)` from a number of measurements of :math:`X(\omega)`. 
+We now want to recover the signal :math:`x(t)` from a number of measurements of :math:`X(\omega)`. 
 If the measurements were uniformly sampled, we could directly use the inihilating filter but it isn't always the case.
 We thus want an approach that performs on non-uniform samples. So we want to interpolate the measurements.
 
